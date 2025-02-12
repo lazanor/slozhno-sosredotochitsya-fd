@@ -1,5 +1,474 @@
 /* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
 
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  /* сохраните в разметке и стилях класс page. На его основе работает скрипт. */
+  background-color: var(--page-bg-color, #000028);
+  
+  font-family: IBM Plex Mono;
+  font-size: 18px;
+}
+
+/*СТИЛИЗУЕМ ШАПКУ*/
+
+/*эти классы определяет внешний вид блоков*/
+.decorated-zone {
+  background-image: var(--header-bg-image, url(/images/cover-image-dark.png));  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+.title {  
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  font-weight: 700;
+  line-height: 95.7px;
+  text-align: left;
+  color: var(--header-title-color);
+  text-shadow: 4px 4px var(--header-title-shadow); 
+}
+
+.subtitle {
+  font-family: IBM Plex Mono;
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.4px;
+  text-align: left;
+  color: var(--section-subtitle-text-color);
+  background-color: var(--section-bg-color);
+}
+
+.header__theme-menu-list {
+  list-style: none;
+}
+
+.header__theme-menu-button {
+  background-color: transparent;
+  border: none;
+  color: var(--accent-color);
+  font-family: IBM Plex Mono;
+  font-size: 18px;
+  width: 70px;
+  height: 26px;
+}
+
+.header__theme-menu-button:hover {
+  border: 1px solid var(--menu-btn-select-color, #FF0070);
+}
+
+.header__theme-menu-button:focus {
+  border-bottom: 1px solid var(--accent-color, #FF0070);;
+}
+
+.header__theme-menu-button_active {
+  border: 1px solid var(--accent-color, #FF0070);
+}
+
+/*эти классы определяет положение блоков*/
+.header {
+  display: grid;
+  grid-template-areas: 
+    "record"
+    "nav"
+    "title"
+    "subtitle";
+  position: relative;
+  margin-block-end: 40px;
+}
+
+.header__theme-menu {  
+  grid-area: nav;
+  justify-self: end;
+  margin: 75px 10px 65px;
+}
+
+.header__theme-menu-item {
+  margin-block-end: 10px;
+}
+
+.header__theme-menu-item:last-child {
+  margin-block-end: 0px;
+}
+
+.header__title {
+  grid-area: title;
+  margin-block-end: 55px;
+}
+
+.header__subtitle {
+  grid-area: subtitle;
+  margin-block-end: 66px;
+}
+
+.title, .header__subtitle {
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+}
+
+
+/*БЛОК РЮШЕЧЕК*/
+
+.header__record {
+  background-image: var(--reacord-bg-image);
+  grid-area: record;
+  block-size: 26px;
+  inline-size: 56px;  
+  background-repeat: no-repeat;
+  justify-self: end;
+  position: absolute;
+
+  margin: 10px 19px;р
+}
+
+.header::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 10px;
+  inset-inline-start: calc(100% - 35px);
+  block-size: 25px;
+  inline-size: 25px;
+  border-block-start: 1px solid var(--accent-color, #FF0070);
+  border-inline-end: 1px solid var(--accent-color, #FF0070);
+}
+
+.header::after {
+  content: '';
+  position: absolute;
+  inset-block-start: calc(100% - 35px);
+  inset-inline-start: 10px;
+  block-size: 25px;
+  inline-size: 25px;
+  border-block-end: 1px solid var(--accent-color, #FF0070);
+  border-inline-start: 1px solid var(--accent-color, #FF0070);
+}
+
+
+/*СТИЛИЗУЕМ ОСНОВНОЙ КОНТЕНТ*/
+/*Классы оформления*/
+.section-title {    
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 23.4px;
+  text-align: left;
+  color: var(--accent-color, #FF0070);
+}
+
+.article-subtitle {
+  margin-block-start: 20px;
+  margin-block-end: 10px;
+  /*ну блин не вышло красиво везде выдержать разделение на классы оформления и положения*/
+  font-weight: 400;
+}
+
+.main__section {
+  color: var(--text-color);  
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 23.4px;
+  text-align: left;
+}
+
+.main__section a {
+  text-decoration: none;
+  text-shadow: 2px 2px var(--section-bg-color);
+}
+
+.main__section a:hover {
+  text-decoration: underline;
+}
+
+.main__section a:focus {
+  border: 1px solid var(--accent-colorh);
+}
+
+/*Классы положения*/
+.main {
+  margin-inline-start: 10px;
+  margin-inline-end: 10px;
+  margin-block-end: 40px;
+}
+
+.main__section-header {
+  margin-block-end: 20px;
+}
+
+.main__section-subtitle {
+  margin-block-end: 10px;
+}
+
+.main__section-article {
+  margin-block-end: 20px;
+}
+
+.grid-right-column, .grid-multi-column {  
+  margin-block-end: 50px;  
+}
+
+.image-colection {
+  display: grid;
+}
+
+.image-colection img {
+  
+  width: 100%;
+  margin-block-end: 10px;
+  
+}
+
+/*ФУТЕР*/
+.footer {  
+  height: 668px;  
+  display: grid;
+  position: relative;
+}
+
+.footer__title {
+  align-self: center;
+  justify-self: center;
+}
+
+/*РЮШЕЧКИ ФУТЕРА*/
+.footer::before {
+  content: '';
+  position: absolute;
+  inset-block-start: 0;
+  inset-inline-start: calc(100% - 35px);
+  block-size: 25px;
+  inline-size: 25px;
+  border-block-start: 1px solid var(--accent-color, #FF0070);
+  border-inline-end: 1px solid var(--accent-color, #FF0070);
+}
+
+.footer::after {
+  content: '';
+  position: absolute;
+  inset-block-start: calc(100% - 45px);
+  inset-inline-start: 10px;
+  block-size: 25px;
+  inline-size: 25px;
+  border-block-end: 1px solid var(--accent-color, #FF0070);
+  border-inline-start: 1px solid var(--accent-color, #FF0070);
+}
+
+
+
+
+
+/*
+
++---------------------------------+
+| СТИЛИЗАЦИЯ ПОД ПЛАНШЕТ И ДАЛЕЕ  |
++---------------------------------+
+
+*/
+
+@media (min-width: 768px) {
+/*СТИЛИЗУЕМ ШАПКУ*/
+  .header {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "record record"
+      "nav nav"
+      "title title"
+      ". subtitle";    
+
+      margin-block-end: 60px;
+  }
+     
+  .header__theme-menu {    
+    justify-self: end;    
+    margin: 192px 20px 173px;      
+  }
+
+
+  .title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+    line-height: 99px;
+  }
+
+.header__title {  
+  margin-block-end: 162px;
+}
+  
+  .header__subtitle {
+    margin-block-end: 183px;
+    /*
+    margin: 162px 20px 183px 0;
+    */
+  }
+
+  .title, .header__subtitle {
+    margin-inline-start: 0;
+    margin-inline-end: 20px;
+  }
+
+  /*БЛОК РЮШЕЧЕК*/
+  .header__record { 
+    margin: 20px 25px;
+  }
+  
+  .header::before {    
+    inset-block-start: 20px;
+    inset-inline-start: calc(100% - 45px);    
+  }
+  
+  .header::after {    
+    inset-block-start: calc(100% - 45px);
+    inset-inline-start: 20px;    
+  }
+
+  /*СТИЛИЗУЕМ КОНТЕНТ*/
+  
+  .main {
+    margin-inline-start: 20px;
+    margin-inline-end: 20px;
+    margin-block-end: 60px;
+  }
+
+  .main__section {
+    /*
+    margin-block-end: 80px;
+    */
+  }
+  
+  .grid-right-column {    
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    gap: 20px;
+  }
+
+  .grid-multi-column-header .section-title {
+    inline-size: calc(100% / 3 - 10px); 
+    /*
+    Ориентируемся на грид сверху и перспективный грид этого блока
+    Заголовок занимает 1/3 за минусом гэпа    
+    */
+  }
+
+  .main__section-article:last-child {
+    margin-block-end: 0;
+  }
+
+  .grid-right-column, .grid-multi-column {  
+    margin-block-end: 80px;  
+  }
+
+  /*Стилизация блока картинок*/
+  .image-colection {
+    margin-block-start: 20px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: calc(192 / 740) calc(230 / 740) calc(318 / 740);
+    gap: 20px;
+    grid-auto-flow: dense;
+    
+  }
+
+  .image-colection img {
+    inline-size: 100%;
+    block-size: 100%;
+    object-fit: cover;
+    margin: 0;
+  }
+
+  .image-colection img:nth-child(1) {
+    grid-column: 1 / 3;
+  }
+  .image-colection img:nth-child(2) {
+    grid-column: 3 / 4;
+    grid-row: 1 / 3;
+  }
+  .image-colection img:nth-child(3) {
+    grid-column: 1 / 2;
+    grid-row: 2 / 4;
+  }
+  .image-colection img:nth-child(5) {
+    grid-column: 2 / 4;
+    grid-row: 3 / 4;
+  }
+
+  /*ФУТЕР*/
+  .footer {  
+    height: 1024px;  
+  }
+  /*РЮШЕЧКИ ФУТЕРА*/
+  .footer::before {
+    inset-block-start: 20px;
+    inset-inline-start: calc(100% - 45px);
+  }
+
+  .footer::after {
+    inset-block-start: calc(100% - 45px);
+    inset-inline-start: 20px;
+  }
+  
+}
+
+
+
+/*
+
++-------------------------+
+| СТИЛИЗАЦИЯ ПОД ДЕСКТОП  |
++-------------------------+
+
+*/
+
+@media (min-width: 1024px) {
+/*СТИЛИЗУЕМ ШАПКУ*/
+  .header {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas: 
+      "record record"
+      "nav nav"
+      "title title"
+      ". subtitle";    
+  }
+     
+  .header__theme-menu {    
+    justify-self: center;
+    margin: 20px auto 273px;
+  }
+
+  .header__theme-menu-list {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
+  .header__theme-menu-item {
+    margin-block-end: 0;
+  }
+
+  .title {
+    line-height: 129.53px;
+    
+  }
+
+  .header__title {
+    margin-block-end: 114px;
+  }
+
+  .header__subtitle {
+    margin-block-end: 134px;
+  }
+
+  /*СТИЛИЗУЕМ КОНТЕНТ*/
+
+  .grid-multi-column {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); 
+    gap: 20px;
+  }
+
+  
+
+  .grid-multi-column-header {
+    grid-column: 1 / 4;
+    margin-block-end: 0;/*Так как есть гэп*/
+  }
+
+  /*ФУТЕР*/
+  .footer {  
+    height: 768px;  
+  }
 }
