@@ -9,14 +9,14 @@
     Так стили написанные ниже будут иметь больший вес,
     чем стили в медиазапросе предпочтений пользователя
   */
-  --page-bg-color: #FFF1F7;
+  --page-bg-color: #fff1f7;
   --text-color: #353430;
   --header-bg-image: url(/images/cover-image-light.png);
   --reacord-bg-image: url();
-  --header-title-color: #FFC2E6;
-  --header-title-shadow: #FF0070;  
-  --section-bg-color: #FF8DCB;
-  --menu-btn-select-color: #32312D3c;
+  --header-title-color: #ffc2e6;
+  --header-title-shadow: #ff0070;
+  --section-bg-color: #ff8dcb;
+  --menu-btn-select-color: #32312d3c;
   --section-subtitle-text-color: #353430;
   --accent-color: #353430;
 }
