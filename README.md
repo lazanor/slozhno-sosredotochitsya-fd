@@ -3,6 +3,7 @@
 СЛОЖНО СОСРЕДОТОЧИТЬСЯ - адаптивный сайт
 
 ## Основания выполнения работы
+
 3-я проектная работа в рамках Яндекс.Практикум
 
-```git clone git@github.com:lazanor/slozhno-sosredotochitsya.git```
+`git clone git@github.com:lazanor/slozhno-sosredotochitsya-fd.git`
