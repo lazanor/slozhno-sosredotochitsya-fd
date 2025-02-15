@@ -70,6 +70,8 @@
 /*эти классы определяет положение блоков*/
 .header {
   width: 100%;
+  min-height: 668px;
+  height: 100vh;
   display: grid;
   grid-template-areas:
     "record"
@@ -219,7 +221,8 @@
 
 /*ФУТЕР*/
 .footer {
-  height: 668px;
+  min-height: 668px;
+  height: 100vh;
   display: grid;
   position: relative;
 }
@@ -274,7 +277,7 @@
       "nav nav"
       "title title"
       ". subtitle";
-
+    min-height: 1024px;
     margin-block-end: 60px;
   }
 
@@ -391,7 +394,7 @@
 
   /*ФУТЕР*/
   .footer {
-    height: 1024px;
+    min-height: 1024px;
   }
   /*РЮШЕЧКИ ФУТЕРА*/
   .footer::before {
@@ -422,6 +425,7 @@
       "nav nav"
       "title title"
       ". subtitle";
+      min-height: 768px;
   }
 
   .header__theme-menu {
@@ -470,6 +474,6 @@
 
   /*ФУТЕР*/
   .footer {
-    height: 768px;
+    min-height: 768px;
   }
 }
