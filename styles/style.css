@@ -3,20 +3,25 @@
 .page {
   /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
   background-color: var(--page-bg-color, #000028);
-  background-attachment: fixed;
-  font-family: IBM Plex Mono;
+
+  font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
+  background-image: var(--header-bg-image, url(../images/cover-image-dark.png));
+
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-size: cover;
 }
 
 /*СТИЛИЗУЕМ ШАПКУ*/
 
 /*эти классы определяет внешний вид блоков*/
 .decorated-zone {
-  background-image: var(--header-bg-image, url(/images/cover-image-dark.png));
+  /*background-image: var(--header-bg-image, url(../images/cover-image-dark.png));
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-  background-attachment: fixed;
+  background-attachment: fixed;*/
 }
 
 .title {
@@ -29,7 +34,7 @@
 }
 
 .subtitle {
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", sans-serif;
   font-size: 18px;
   font-weight: 700;
   line-height: 23.4px;
@@ -46,7 +51,7 @@
   background-color: transparent;
   border: none;
   color: var(--accent-color);
-  font-family: IBM Plex Mono;
+  font-family: "IBM Plex Mono", sans-serif;
   font-weight: 400;
   font-size: 18px;
   line-height: 18px;
@@ -59,6 +64,7 @@
 }
 
 .header__theme-menu-button:focus-visible {
+  outline: none;
   border-bottom: 1px solid var(--accent-color, #ff0070);
 }
 
@@ -78,6 +84,7 @@
     "nav"
     "title"
     "subtitle";
+  grid-template-rows: 0px repeat(3, auto);
   position: relative;
   margin-block-end: 40px;
 }
@@ -85,7 +92,7 @@
 .header__theme-menu {
   grid-area: nav;
   justify-self: end;
-  margin: 73px 10px 67px;
+  margin: 74px 10px 67px;
 }
 
 .header__theme-menu-item {
@@ -115,18 +122,35 @@
 /*БЛОК РЮШЕЧЕК*/
 
 .header__record {
-  background-image: var(--reacord-bg-image, url(/images/rec.png));
+  /*background-image: var(--reacord-bg-image, url(/images/rec.png));*/
   grid-area: record;
-  block-size: 26px;
-  inline-size: 56px;
+  /*block-size: 26px;
+  inline-size: 56px;  */
   background-repeat: no-repeat;
   justify-self: end;
   position: absolute;
-
-  margin: 10px 15px;
+  inset: 0;
+  inset-inline-end: 24px;
+  color: var(--rec-color, #ff0070);
+  font: inherit;
+  font-weight: 400;
+  line-height: 25px;
+  margin: 10px 15px 0 0;
 }
 
-.header::before {
+.header__record::after {
+  content: "";
+  block-size: 9px;
+  inline-size: 9px;
+  border-radius: 50%;
+  background-color: var(--rec-color, #ff0070);
+  position: absolute;
+  inset-inline-start: 43px;
+  inset-block-start: 8px;
+  box-shadow: 0px 0px 4px 2px var(--rec-color, #ff0070);
+}
+
+.decorated-zone::before {
   content: "";
   position: absolute;
   inset-block-start: 10px;
@@ -137,7 +161,7 @@
   border-inline-end: 1px solid var(--accent-color, #ff0070);
 }
 
-.header::after {
+.decorated-zone::after {
   content: "";
   position: absolute;
   inset-block-start: calc(100% - 35px);
@@ -176,14 +200,16 @@
 .main__section a {
   text-decoration: none;
   text-shadow: 2px 2px var(--section-bg-color, #ff0070);
+  transition: border-bottom 2s 300ms;
 }
 
 .main__section a:hover {
-  text-decoration: underline;
+  border-bottom: 1px solid var(--text-color, #f1b2ce);
 }
 
-.main__section a:focus {
-  border: 1px solid var(--accent-color, #ff0070);
+.main__section a:focus-visible {
+  outline: none;
+  border: 1px solid var(--text-color, #f1b2ce);
 }
 
 /*Классы положения*/
@@ -227,7 +253,7 @@
   position: relative;
 }
 
-.footer h1 {
+.footer h2 {
   margin-inline-start: 0;
   margin-inline-end: 0;
 }
@@ -235,29 +261,6 @@
 .footer__title {
   align-self: center;
   justify-self: center;
-}
-
-/*РЮШЕЧКИ ФУТЕРА*/
-.footer::before {
-  content: "";
-  position: absolute;
-  inset-block-start: 0;
-  inset-inline-start: calc(100% - 35px);
-  block-size: 25px;
-  inline-size: 25px;
-  border-block-start: 1px solid var(--accent-color, #ff0070);
-  border-inline-end: 1px solid var(--accent-color, #ff0070);
-}
-
-.footer::after {
-  content: "";
-  position: absolute;
-  inset-block-start: calc(100% - 45px);
-  inset-inline-start: 10px;
-  block-size: 25px;
-  inline-size: 25px;
-  border-block-end: 1px solid var(--accent-color, #ff0070);
-  border-inline-start: 1px solid var(--accent-color, #ff0070);
 }
 
 /*
@@ -272,6 +275,7 @@
   /*СТИЛИЗУЕМ ШАПКУ*/
   .header {
     grid-template-columns: repeat(2, 1fr);
+
     grid-template-areas:
       "record record"
       "nav nav"
@@ -313,12 +317,12 @@
     margin: 20px 25px;
   }
 
-  .header::before {
+  .decorated-zone::before {
     inset-block-start: 20px;
     inset-inline-start: calc(100% - 45px);
   }
 
-  .header::after {
+  .decorated-zone::after {
     inset-block-start: calc(100% - 45px);
     inset-inline-start: 20px;
   }
@@ -331,19 +335,13 @@
     margin-block-end: 60px;
   }
 
-  .main__section {
-    /*
-    margin-block-end: 80px;
-    */
-  }
-
   .grid-right-column {
     display: grid;
     grid-template-columns: 236px 1fr; /*1fr 2fr;*/
     gap: 20px;
   }
 
-  .grid-multi-column-header .section-title {
+  .grid-multi-column-header.section-title {
     inline-size: calc(100% / 3 - 10px);
     /*
     Ориентируемся на грид сверху и перспективный грид этого блока
@@ -364,7 +362,6 @@
   .image-colection {
     margin-block-start: 20px;
     grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: calc(192 / 740) calc(230 / 740) calc(318 / 740);
     gap: 20px;
     grid-auto-flow: dense;
   }
@@ -396,16 +393,6 @@
   .footer {
     min-height: 1024px;
   }
-  /*РЮШЕЧКИ ФУТЕРА*/
-  .footer::before {
-    inset-block-start: 20px;
-    inset-inline-start: calc(100% - 45px);
-  }
-
-  .footer::after {
-    inset-block-start: calc(100% - 45px);
-    inset-inline-start: 20px;
-  }
 }
 
 /*
@@ -425,7 +412,7 @@
       "nav nav"
       "title title"
       ". subtitle";
-      min-height: 768px;
+    min-height: 768px;
   }
 
   .header__theme-menu {

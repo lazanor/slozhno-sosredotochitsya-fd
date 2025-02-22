@@ -11,14 +11,15 @@
   */
   --page-bg-color: #fff1f7;
   --text-color: #353430;
-  --header-bg-image: url(/images/cover-image-light.png);
-  --reacord-bg-image: url();
+  --header-bg-image: url(../images/cover-image-light.png);
+  /*--reacord-bg-image: url();*/
   --header-title-color: #ffc2e6;
   --header-title-shadow: #ff0070;
   --section-bg-color: #ff8dcb;
   --menu-btn-select-color: #32312d66;
   --section-subtitle-text-color: #353430;
   --accent-color: #353430;
+  --rec-color: transparent;
 }
 
 .theme-light .page {
@@ -26,10 +27,10 @@
 }
 
 @media (prefers-color-scheme: light) {
-  :root {
+  :root.theme-light {
     --page-bg-color: #fff1f7;
     --text-color: #353430;
-    --header-bg-image: url(/images/cover-image-light.png);
+    --header-bg-image: url(../images/cover-image-light.png);
     --reacord-bg-image: url();
     --header-title-color: #ffc2e6;
     --header-title-shadow: #ff0070;

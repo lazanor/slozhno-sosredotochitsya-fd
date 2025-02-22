@@ -11,14 +11,15 @@
   */
   --page-bg-color: #000028;
   --text-color: #f1b2ce;
-  --header-bg-image: url(/images/cover-image-dark.png);
-  --reacord-bg-image: url(/images/rec.png);
+  --header-bg-image: url(../images/cover-image-dark.png);
+ 
   --header-title-color: #db00ff;
   --header-title-shadow: #ff0070;
   --section-bg-color: #ff0070;
   --menu-btn-select-color: #ff007066;
   --section-subtitle-text-color: #000028;
   --accent-color: #ff0070;
+  --rec-color: #ff0070;
 }
 
 .theme-dark .page {
