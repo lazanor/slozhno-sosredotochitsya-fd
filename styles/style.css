@@ -236,6 +236,10 @@
   margin-block-end: 10px;
 }
 
+.main__section-article p:last-child {
+  margin-block-end: 0;
+}
+
 .section-why,
 .section-advices,
 .section-causes {
